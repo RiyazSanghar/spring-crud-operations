@@ -19,7 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication()
 				.withUser("anand").password("anand123").roles("USER")
 				.and().withUser("prachi").password("anand123").roles("ADMIN");
-		;
+
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.anyRequest()
 				.fullyAuthenticated()
 				.and()
-				.addFilterBefore(customFilter(), BasicAuthenticationFilter.class)
+				//.addFilterBefore(customFilter(), BasicAuthenticationFilter.class)
 				//.fullyAuthenticated()
 				.httpBasic();
 		httpSecurity.csrf().disable();
