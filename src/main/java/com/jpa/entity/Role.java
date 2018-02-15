@@ -1,15 +1,25 @@
 package com.jpa.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "role")
 public class Role {
 
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id")
     private int id;
+
+    private String role;
+
+    public Role() {
+    }
+
+    public Role(int id, String role) {
+        this.id = id;
+        this.role = role;
+    }
 
     public int getId() {
         return id;
@@ -27,5 +37,5 @@ public class Role {
         this.role = role;
     }
 
-    private String role;
+
 }

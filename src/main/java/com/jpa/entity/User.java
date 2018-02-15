@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import java.util.Set;
 
+@Entity
+@Table(name = "user")
 public class User {
 
 
@@ -29,6 +31,19 @@ public class User {
 
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    public User() {
+    }
+
+    public User(int id, String email, String password, String name, String lastName, int active, Set<Role> roles) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.lastName = lastName;
+        this.active = active;
+        this.roles = roles;
+    }
 
     public int getId() {
         return id;
