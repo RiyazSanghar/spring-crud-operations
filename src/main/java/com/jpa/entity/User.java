@@ -2,6 +2,7 @@ package com.jpa.entity;
 
 
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 
 import java.util.Set;
@@ -43,6 +44,17 @@ public class User {
         this.lastName = lastName;
         this.active = active;
         this.roles = roles;
+    }
+
+    public User(User user)
+    {
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.name = user.getName();
+        this.lastName = user.getLastName();
+        this.active = user.getActive();
+        this.roles =user.getRoles();
     }
 
     public int getId() {
