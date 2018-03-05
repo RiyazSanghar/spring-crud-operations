@@ -7,18 +7,19 @@ import javax.persistence.*;
 public class Role {
 
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id")
     private int id;
 
-    private String role;
+    private String roleName;
 
     public Role() {
     }
 
     public Role(int id, String role) {
         this.id = id;
-        this.role = role;
+        this.roleName = role;
     }
 
     public int getId() {
@@ -29,12 +30,12 @@ public class Role {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleName(String role) {
+        this.roleName = role;
     }
 
 

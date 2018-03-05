@@ -4,9 +4,12 @@ package com.jpa.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +29,13 @@ import io.swagger.annotations.ApiResponses;
 @Api(value = "Topic Resource")
 public class TopicController {
 
+	private Logger logger = LoggerFactory.getLogger(TopicController.class);
+
 	
 	@Autowired
 	private TopicService topicService;
 	
-	
+	@Secured("ROLE_ADMIN")
 	@ApiOperation(value =  "Get All the Topics")
 	@RequestMapping(value = "/topics", method = RequestMethod.GET)
 	@ApiResponses(
@@ -70,8 +75,10 @@ public class TopicController {
 					@ApiResponse(code = 501, message = "Internal Server Error")
 			}
 			)
+	@Secured("ROLE_ADMIN")
 	public ResponseEntity<Topics> addTopic(@RequestBody TopicDTO topics)
 	{
+		logger.error("In Add Topic API");
 		Topics result =topicService.addTopic(topics);
 		return new ResponseEntity<Topics>(result,HttpStatus.OK);
 	}
