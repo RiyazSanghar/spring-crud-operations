@@ -69,7 +69,12 @@
 			<version>2.6.1</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.2</version>
+		</dependency>
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
