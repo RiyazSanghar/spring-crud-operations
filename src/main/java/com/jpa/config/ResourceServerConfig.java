@@ -38,7 +38,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
 		auth.parentAuthenticationManager(authenticationManager)
 				.inMemoryAuthentication()
-				.withUser("Anand").password("anand123").roles("ADMIN");
+				.withUser("Anand").password("anand123").roles("USER");
 
 	}
 
