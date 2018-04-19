@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 @EnableResourceServer
@@ -15,6 +16,9 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private UserDetailsService customUserDetailService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -37,8 +41,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
 
 		auth.parentAuthenticationManager(authenticationManager)
-				.inMemoryAuthentication()
-				.withUser("Anand").password("anand123").roles("USER");
+				.userDetailsService(customUserDetailService);
 
 	}
 
