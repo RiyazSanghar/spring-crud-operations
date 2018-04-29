@@ -4,6 +4,7 @@ package com.jpa.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "ROLE")
 public class Role {
 
     @Id

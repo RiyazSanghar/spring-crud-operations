@@ -1,12 +1,10 @@
 package com.jpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Topics {
+@Table(name = "TOPIC")
+public class Topic {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,14 +14,14 @@ public class Topics {
 	
 	
 	
-	public Topics(Long topicId, String name, String description) {
+	public Topic(Long topicId, String name, String description) {
 		
 		this.id = topicId;
 		this.name = name;
 		this.description = description;
 	}
 	
-	public Topics(){
+	public Topic(){
 			
 	}
 	public Long getId() {

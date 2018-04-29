@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.entity.Course;
-import com.jpa.entity.Topics;
+import com.jpa.entity.Topic;
 import com.jpa.service.CourseService;
 
 import io.swagger.annotations.Api;
@@ -33,7 +33,7 @@ public class CourseController {
 	private CourseService courseService;
 	
 	
-	@ApiOperation(value = "Get Courses Based On Topics (Pass topic id)")
+	@ApiOperation(value = "Get Courses Based On Topic (Pass topic id)")
 	@RequestMapping(value = "/topics/{id}/courses",method = RequestMethod.GET)
 	@ApiResponses(
 			value = {
@@ -71,7 +71,7 @@ public class CourseController {
 			)
 	public ResponseEntity<Course> addCourse(@RequestBody Course course, @PathVariable Long topicId)
 	{
-		course.setTopics(new Topics(topicId,"",""));
+		course.setTopic(new Topic(topicId,"",""));
 		Course result = courseService.addCourse(course);
 
 		return new ResponseEntity<Course>(result, HttpStatus.OK);
@@ -88,7 +88,7 @@ public class CourseController {
 			)
 	public ResponseEntity<Course> updateCourse(@RequestBody Course course, @PathVariable Long topicId, @PathVariable String id)
 	{
-		course.setTopics(new Topics(topicId,"",""));
+		course.setTopic(new Topic(topicId,"",""));
 		Course result  =courseService.updateCourse(course);
 
 		return new ResponseEntity<Course>(result, HttpStatus.OK);

@@ -6,21 +6,21 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
-public class Users {
+@Table(name = "USER")
+public class User {
 
 
 
-    public Users(Users users) {
+    public User(User user) {
 
-        this.id = users.id;
-        this.email = users.email;
-        this.firstName = users.firstName;
-        this.lastName = users.lastName;
-        this.active = users.active;
-        this.roles = users.roles;
-        this.password = users.password;
-        this.userName = users.userName;
+        this.id = user.id;
+        this.email = user.email;
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+        this.active = user.active;
+        this.roles = user.roles;
+        this.password = user.password;
+        this.userName = user.userName;
     }
 
     @Id
@@ -52,8 +52,11 @@ public class Users {
     @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @ManyToOne
+    private School school;
 
-    public Users() {
+
+    public User() {
     }
 
 

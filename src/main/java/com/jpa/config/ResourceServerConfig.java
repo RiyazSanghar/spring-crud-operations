@@ -25,7 +25,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
 
 		http.requestMatchers()
-				.antMatchers("/login","/oauth/authorize")
+				.antMatchers("/login","/oauth/authorize","/school*")
 				.and()
 				.authorizeRequests()
 				.anyRequest()
@@ -33,6 +33,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.formLogin()
 				.permitAll();
+
 	}
 
 

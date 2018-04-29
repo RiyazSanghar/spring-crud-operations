@@ -4,6 +4,7 @@ package com.jpa.controller;
 
 import java.util.List;
 
+import com.jpa.entity.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.controller.dto.TopicDTO;
-import com.jpa.entity.Topics;
 import com.jpa.service.TopicService;
 
 import io.swagger.annotations.Api;
@@ -31,7 +31,7 @@ public class TopicController {
 	private TopicService topicService;
 	
 	
-	@ApiOperation(value =  "Get All the Topics")
+	@ApiOperation(value =  "Get All the Topic")
 	@RequestMapping(value = "/topics", method = RequestMethod.GET)
 	@ApiResponses(
 			value = {
@@ -39,11 +39,11 @@ public class TopicController {
 					@ApiResponse(code = 501, message = "Internal Server Error")
 			}
 			)
-	public ResponseEntity<List<Topics>> getAllTopics()
+	public ResponseEntity<List<Topic>> getAllTopics()
 	{
 		
-		List<Topics> result = topicService.getAllTopics();
-		return new ResponseEntity<List<Topics>>(result,HttpStatus.OK);
+		List<Topic> result = topicService.getAllTopics();
+		return new ResponseEntity<List<Topic>>(result,HttpStatus.OK);
 	}
 	
 	
@@ -55,10 +55,10 @@ public class TopicController {
 					@ApiResponse(code = 501, message = "Internal Server Error")
 			}
 			)
-	public ResponseEntity<Topics> getTopic(@PathVariable("foo") Long id)
+	public ResponseEntity<Topic> getTopic(@PathVariable("foo") Long id)
 	{
-		Topics result = topicService.getTopic(id);
-		return new ResponseEntity<Topics>(result,HttpStatus.OK);
+		Topic result = topicService.getTopic(id);
+		return new ResponseEntity<Topic>(result,HttpStatus.OK);
 	}
 	
 	
@@ -70,24 +70,24 @@ public class TopicController {
 					@ApiResponse(code = 501, message = "Internal Server Error")
 			}
 			)
-	public ResponseEntity<Topics> addTopic(@RequestBody TopicDTO topics)
+	public ResponseEntity<Topic> addTopic(@RequestBody TopicDTO topics)
 	{
-		Topics result =topicService.addTopic(topics);
-		return new ResponseEntity<Topics>(result,HttpStatus.OK);
+		Topic result =topicService.addTopic(topics);
+		return new ResponseEntity<Topic>(result,HttpStatus.OK);
 	}
 	
 	@ApiOperation(value =  "Update Topic")
-	@RequestMapping(method = RequestMethod.PUT,value = "/topics/{id}")
+	@RequestMapping(method = RequestMethod.PUT,value = "/topic/{id}")
 	@ApiResponses(
 			value = {
 					@ApiResponse(code = 500, message = "Internal Server Error"),
 					@ApiResponse(code = 501, message = "Internal Server Error")
 			}
 			)
-	public ResponseEntity<Topics> updateTopic(@RequestBody Topics topics, @PathVariable Long id)
+	public ResponseEntity<Topic> updateTopic(@RequestBody Topic topic, @PathVariable Long id)
 	{
-		 Topics result = topicService.updateTopic(topics,id);
-		 return new ResponseEntity<Topics>(result,HttpStatus.OK);
+		 Topic result = topicService.updateTopic(topic,id);
+		 return new ResponseEntity<Topic>(result,HttpStatus.OK);
 		 
 		 
 	}

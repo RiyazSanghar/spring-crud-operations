@@ -3,12 +3,12 @@ package com.jpa.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jpa.entity.Topic;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jpa.controller.dto.TopicDTO;
-import com.jpa.entity.Topics;
 import com.jpa.repository.TopicRepository;
 
 @Service
@@ -24,30 +24,30 @@ public class TopicService {
 	
 
 	
-	public List<Topics> getAllTopics()
+	public List<Topic> getAllTopics()
 	{
-		List<Topics> topics =new ArrayList<>();
+		List<Topic> topics =new ArrayList<>();
 		
 		topicRepository.findAll().forEach(topics::add);
 		return topics;
 	}
 	
-	public Topics getTopic(Long id)
+	public Topic getTopic(Long id)
 	{
 		return topicRepository.findOne(id);
 		
 	}
 
-	public Topics addTopic(TopicDTO topic) {
-		Topics t =modelMapper.map(topic, Topics.class);
-		Topics result =topicRepository.save(t);
+	public Topic addTopic(TopicDTO topic) {
+		Topic t =modelMapper.map(topic, Topic.class);
+		Topic result =topicRepository.save(t);
 		return result;
 	}
 
-	public Topics updateTopic(Topics topic, Long id) {
+	public Topic updateTopic(Topic topic, Long id) {
 		
 		
-		Topics result =topicRepository.save(topic);
+		Topic result =topicRepository.save(topic);
 		return result;
 		
 	}

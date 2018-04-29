@@ -8,6 +8,6 @@ import com.jpa.entity.Course;
 
 public interface CourseRepository extends CrudRepository<Course, Long> {
 	
-	public List<Course> findByTopicsId(Long topicId);
+	public List<Course> findByTopicId(Long topicId);
 
 }

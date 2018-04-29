@@ -1,12 +1,9 @@
 package com.jpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "COURSE")
 public class Course {
 	
 	@Id
@@ -16,7 +13,7 @@ public class Course {
 	private String description;
 	
 	@ManyToOne
-	private Topics topics;
+	private Topic topic;
 	
 	
 
@@ -25,7 +22,7 @@ public class Course {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.topics = new Topics(topicId,topics.getName(),topics.getDescription());
+		this.topic = new Topic(topicId, topic.getName(), topic.getDescription());
 	}
 	
 	public Course(){
@@ -49,12 +46,12 @@ public class Course {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Topics getTopics() {
-		return topics;
+	public Topic getTopic() {
+		return topic;
 	}
 
-	public void setTopics(Topics topics) {
-		this.topics = topics;
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 
 }

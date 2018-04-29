@@ -3,17 +3,15 @@ package com.jpa.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class CustomUserDetails extends Users implements UserDetails{
+public class CustomUserDetails extends User implements UserDetails{
 
 
-    public CustomUserDetails(final Users users) {
-        super(users);
+    public CustomUserDetails(final User user) {
+        super(user);
     }
 
     @Override

@@ -1,9 +1,8 @@
 package com.jpa.service;
 
 import com.jpa.entity.CustomUserDetails;
-import com.jpa.entity.Users;
-import com.jpa.repository.UsersRepository;
-import org.hibernate.service.UnknownServiceException;
+import com.jpa.entity.User;
+import com.jpa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,16 +17,16 @@ public class CustomUserDetailsService implements UserDetailsService{
 
 
     @Autowired
-    UsersRepository usersRepository;
+    UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       Optional<Users> usersOptional = usersRepository.findByUserName(username);
+       Optional<User> userOptional = userRepository.findByUserName(username);
 
-        usersOptional
+        userOptional
                 .orElseThrow(()->new UsernameNotFoundException("User Name Not Found"));
 
-        return usersOptional
+        return userOptional
                 .map(CustomUserDetails::new)
                 .get();
 
